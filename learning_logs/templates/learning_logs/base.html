@@ -1,6 +1,11 @@
 <p>
   <a href="{% url 'learning_logs:index' %}">Журнал навчання</a> -
-  <a href="{% url 'learning_logs:topics' %}">Теми</a>
+  <a href="{% url 'learning_logs:topics' %}">Теми</a> -
+  {% if user.is_authenticated %}
+    Привіт, {{ user.username }}.
+  {% else %}
+    <a href="{% url 'users:login' %}">Увійти</a>
+  {% endif %}
 </p>
 
 {% block content %}{% endblock content %}
